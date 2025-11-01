@@ -2529,7 +2529,7 @@ def notna(obj):
     #     Series.notnull :Boolean inverse of Series.isnull.
     #     DataFrame.notna :Boolean inverse of DataFrame.isna.
     #   into the See Also in the docstring. It does not find the method in the latest numpydoc.
-    if isinstance(obj, (DataFrame, Series)):
+    if type(obj) is DataFrame or type(obj) is Series:
         return obj.notna()
     else:
         return pd.notna(obj)
