@@ -47,6 +47,8 @@ if TYPE_CHECKING:
     from databricks.koalas.frame import DataFrame
     from databricks.koalas.internal import InternalFrame
 
+_KOALAS_TESTING_PRESENT = "KOALAS_TESTING" in os.environ
+
 
 ERROR_MESSAGE_CANNOT_COMBINE = (
     "Cannot combine the series or dataframe because it comes from a different dataframe. "
@@ -427,7 +429,7 @@ def align_diff_frames(
 
 def is_testing():
     """ Indicates whether Koalas is currently running tests. """
-    return "KOALAS_TESTING" in os.environ
+    return _KOALAS_TESTING_PRESENT
 
 
 def default_session(conf=None):
